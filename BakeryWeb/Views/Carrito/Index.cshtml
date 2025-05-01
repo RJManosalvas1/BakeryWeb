@@ -1,5 +1,4 @@
-﻿@model IEnumerable<BakeryWeb.Models.CarritoItems>
-
+﻿@model List<BakeryWeb.Models.CarritoItems>
 
 @{
     ViewData["Title"] = "Carrito de Compras";
@@ -7,10 +6,10 @@
 
 <h2>Carrito de Compras</h2>
 
-@if (Model.Any())
+@if (Model != null && Model.Any())
 {
     <table class="table">
-        <thead>
+        <thead class="table-dark">
             <tr>
                 <th>Producto</th>
                 <th>Cantidad</th>
@@ -23,14 +22,14 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.Producto.Nombre</td>
+                    <td>@item.Producto?.Nombre</td>
                     <td>@item.Cantidad</td>
-                    <td>@item.Producto.Precio.ToString("C")</td>
-                    <td>@((item.Cantidad * item.Producto.Precio).ToString("C"))</td>
+                    <td>@item.Producto?.Precio.ToString("C")</td>
+                    <td>@((item.Cantidad * (item.Producto?.Precio ?? 0)).ToString("C"))</td>
                     <td>
-                        <form asp-controller="Carrito" asp-action="EliminarDelCarrito" method="post">
+                        <form asp-controller="Carrito" asp-action="EliminarDelCarrito" method="post" class="d-inline">
                             <input type="hidden" name="carritoItemId" value="@item.CarritoItemsId" />
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                         </form>
                     </td>
                 </tr>
@@ -38,16 +37,18 @@
         </tbody>
     </table>
 
-    <div class="text-right">
+    <div class="text-end mt-3">
         <h4>Total del Carrito: @Model.Sum(item => item.Cantidad * (item.Producto?.Precio ?? 0)).ToString("C")</h4>
     </div>
 
-    <a asp-controller="Productos" asp-action="Index" class="btn btn-primary">Seguir Comprando</a>
+    <div class="mt-3">
+        <a asp-controller="Producto" asp-action="Index" class="btn btn-primary">Seguir Comprando</a>
+    </div>
 }
 else
 {
     <div class="alert alert-info">
         No hay productos en el carrito.
     </div>
-    <a asp-controller="Productos" asp-action="Index" class="btn btn-primary">Ir a Productos</a>
+    <a asp-controller="Producto" asp-action="Index" class="btn btn-primary">Ir a Productos</a>
 }

@@ -1,33 +1,24 @@
-﻿﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CarritoCompras</title>
+    <title>@ViewData["Title"] - Bakery Shop</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SistemaVentas.styles.css" asp-append-version="true" />
-    <!-- Agregar Font Awesome para íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
-    <!-- Navbar Mejorado -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
         <div class="container-fluid">
-            <!-- Logo o Nombre de la Empresa -->
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                <i class="fas fa-store me-2"></i>CarritoCompras
+                <i class="fas fa-store me-2"></i>Bakery Shop
             </a>
-
-            <!-- Botón para Menú en Dispositivos Móviles -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <!-- Contenido del Navbar -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Menú de Navegación -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
@@ -55,8 +46,6 @@
                         </ul>
                     </li>
                 </ul>
-
-                <!-- Botón de Carrito con Contador -->
                 <a asp-controller="Carrito" asp-action="Index" class="btn btn-outline-light position-relative me-2" id="ver-carrito">
                     <i class="fas fa-shopping-cart"></i>
                     @if (ViewBag.TotalProductos != null && ViewBag.TotalProductos > 0)
@@ -72,8 +61,6 @@
                         </span>
                     }
                 </a>
-
-                <!-- Barra de Búsqueda (Opcional) -->
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
                     <button class="btn btn-outline-light" type="submit">
@@ -84,6 +71,30 @@
         </div>
     </nav>
 
+    <!-- Carrusel de Imágenes -->
+    <div id="carouselBakery" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active text-center">
+                <img src="https://images.unsplash.com/photo-1517427294546-5aa121f68e8a?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block mx-auto w-50" alt="Pastel 1">
+            </div>
+            <div class="carousel-item text-center">
+                <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block mx-auto w-50" alt="Pastel 2">
+            </div>
+            <div class="carousel-item text-center">
+                <img src="https://plus.unsplash.com/premium_photo-1670692695578-319f28b97ac1?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block mx-auto w-50" alt="Pastel 3">
+            </div>
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselBakery" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselBakery" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -92,7 +103,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2025 - SistemaVentas - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2025 - BakeryShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

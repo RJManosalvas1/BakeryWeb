@@ -1,27 +1,23 @@
-using BakeryWeb.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using BakeryWeb.Data;
-
+using BakeryWeb.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<BakeryWebContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("BakeryWebContext") ?? throw new InvalidOperationException("Connection string 'BakeryWebContext' not found.")));
 
+// Registrar AplicacionDbContext con la cadena de conexión 'DefaultConnection'
+builder.Services.AddDbContext<AplicacionDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")
+        ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.")));
 
+// Agregar controladores con vistas
 builder.Services.AddControllersWithViews();
 
+var app = builder.Build();
 
-builder.Services.AddDbContext<BakeryWebContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-
-var app = builder.Build(); 
-
+// Middleware
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    app.UseHsts(); 
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
@@ -31,6 +27,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+// Rutas
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
