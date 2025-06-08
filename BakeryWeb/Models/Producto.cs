@@ -8,12 +8,15 @@ namespace BakeryWeb.Models
     {
         [Key]
         public int ProductoId { get; set; }
+
+        [Required]
         public string Nombre { get; set; } = string.Empty;
-        public string Descripcion { get; set; } = string.Empty;
-        [Column(TypeName = "decimal(18,2)")]
+
+        [Required]
+        [Column(TypeName = "decimal(10,2)")]
         public decimal Precio { get; set; }
+
         public string ImagenUrl { get; set; } = string.Empty;
-        public bool EnStock { get; set; }
 
     }
 }

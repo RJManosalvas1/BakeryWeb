@@ -1,22 +1,90 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+:root {
+    --pastel-primary: #f7c59f;
+    --pastel-secondary: #ffe5b4;
+    --pastel-accent: #d89584;
+    --pastel-bg: #fff8f0;
+    --pastel-dark: #6f4e37;
 }
 
 body {
-  margin-bottom: 60px;
+    background-color: var(--pastel-bg);
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+}
+
+.navbar {
+    background-color: var(--pastel-dark) !important;
+}
+
+.navbar-brand, .nav-link, .navbar-text {
+    color: #fff !important;
+    font-weight: 500;
+}
+
+h1, h2, h3, h4 {
+    color: var(--pastel-dark);
+    font-family: 'Georgia', serif;
+}
+
+.btn-primary {
+    background-color: var(--pastel-primary);
+    border-color: var(--pastel-primary);
+    color: #333;
+}
+
+    .btn-primary:hover {
+        background-color: var(--pastel-accent);
+        border-color: var(--pastel-accent);
+        color: #fff;
+    }
+
+.btn-outline-primary {
+    border-color: var(--pastel-primary);
+    color: var(--pastel-dark);
+}
+
+    .btn-outline-primary:hover {
+        background-color: var(--pastel-primary);
+        color: #fff;
+    }
+
+.card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+    .card:hover {
+        transform: scale(1.02);
+    }
+
+footer {
+    background-color: var(--pastel-dark);
+    color: #fff;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+    footer a {
+        color: var(--pastel-secondary);
+    }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+.table th {
+    background-color: var(--pastel-dark);
+    color: white;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.container {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }

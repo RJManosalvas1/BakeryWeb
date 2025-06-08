@@ -1,7 +1,47 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Bakery Shop</h1>
+<!-- Hero / Banner -->
+<div class="text-center py-5 bg-light">
+    <h1 class="display-4">Bienvenidos a Bakery Shop</h1>
+    <p class="lead">Dulces momentos, horneados con amor.</p>
+    <a class="btn btn-primary btn-lg mt-3" asp-controller="Producto" asp-action="Index">Ver Productos</a>
+</div>
+
+<!-- Productos Destacados -->
+<div class="container py-5">
+    <h2 class="text-center mb-4">Nuestros Productos</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="https://plus.unsplash.com/premium_photo-1663840297060-6667e0646721?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="Cupcakes">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Cupcakes</h5>
+                    <p class="card-text">Suaves, esponjosos y con el glaseado perfecto.</p>
+                    <a class="btn btn-outline-primary" asp-controller="Producto" asp-action="Details" asp-route-id="1">Ver más</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="https://images.unsplash.com/photo-1602351447937-745cb720612f?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="Torta">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Torta de Chocolate</h5>
+                    <p class="card-text">La favorita de todos, hecha con cacao premium.</p>
+                    <a class="btn btn-outline-primary" asp-controller="Producto" asp-action="Details" asp-route-id="2">Ver más</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="https://plus.unsplash.com/premium_photo-1713447395823-2e0b40b75a89?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="PastelesPersonalizados">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Personalizados</h5>
+                    <p class="card-text">Pasteles personalizados como tu los quieras.</p>
+                    <a class="btn btn-outline-primary" asp-controller="Producto" asp-action="Details" asp-route-id="3">Ver más</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

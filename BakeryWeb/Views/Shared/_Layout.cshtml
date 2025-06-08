@@ -1,114 +1,73 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Bakery Shop</title>
+
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SistemaVentas.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-        <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                <i class="fas fa-store me-2"></i>Bakery Shop
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
-                            <i class="fas fa-home me-1"></i>Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Producto" asp-action="Index">
-                            <i class="fas fa-box-open me-1"></i>Productos
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-cog me-1"></i>Opciones
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href=""><i class="fas fa-user me-1"></i>Mi Perfil</a></li>
-                            <li>
-                                <a class="dropdown-item" asp-area="" asp-controller="Productos" asp-action="Create">
-                                    <i class="fa-solid fa-plus"></i> Agregar Producto
-                                </a>
-                            </li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href=""><i class="fas fa-sign-out-alt me-1"></i>Cerrar Sesión</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <a asp-controller="Carrito" asp-action="Index" class="btn btn-outline-light position-relative me-2" id="ver-carrito">
-                    <i class="fas fa-shopping-cart"></i>
-                    @if (ViewBag.TotalProductos != null && ViewBag.TotalProductos > 0)
-                    {
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="contador-carrito">
-                            @ViewBag.TotalProductos
-                        </span>
-                    }
-                    else
-                    {
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="contador-carrito" style="display: none;">
-                            0
-                        </span>
-                    }
+<body class="d-flex flex-column min-vh-100">
+    <Header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-store me-2"></i>Bakery Shop
                 </a>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">
+                                <i class="fas fa-home me-1"></i>Inicio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Producto" asp-action="Index">
+                                <i class="fas fa-box-open me-1"></i>Productos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Carrito" asp-action="Index">
+                                <i class="fas fa-shopping-cart me-1"></i>Carrito
+                            </a>
+                        </li>
+                    </ul>
+                    <form class="d-flex me-2" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Buscar..." />
+                        <button class="btn btn-outline-light" type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- Carrusel de Imágenes -->
-    <div id="carouselBakery" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active text-center">
-                <img src="https://images.unsplash.com/photo-1517427294546-5aa121f68e8a?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block mx-auto w-50" alt="Pastel 1">
-            </div>
-            <div class="carousel-item text-center">
-                <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block mx-auto w-50" alt="Pastel 2">
-            </div>
-            <div class="carousel-item text-center">
-                <img src="https://plus.unsplash.com/premium_photo-1670692695578-319f28b97ac1?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block mx-auto w-50" alt="Pastel 3">
-            </div>
-
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselBakery" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselBakery" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-
-    <div class="container">
-        <main role="main" class="pb-3">
+        <div class="container flex-grow-1 py-4">
             @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - BakeryShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
+
+        <footer class="bg-dark text-white py-4 mt-auto">
+            <div class="container text-center">
+                <p class="mb-0">&copy; 2025 - Bakery Shop. Todos los derechos reservados.</p>
+                <p class="mb-0">
+                    <a asp-controller="Home" asp-action="Privacy" class="text-decoration-none text-light">
+                        Política de Privacidad
+                    </a>
+                </p>
+            </div>
+        </footer>
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

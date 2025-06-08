@@ -8,11 +8,6 @@
     <h2 class="bg-dark text-white p-3">PRODUCTOS DISPONIBLES</h2>
 </div>
 
-<div class="mb-3 text-end">
-    <a asp-action="Create" class="btn btn-success">
-        <i class="bi bi-plus-lg"></i> Agregar Producto
-    </a>
-</div>
 
 @if (!Model.Any())
 {
@@ -27,7 +22,7 @@ else
             <tr>
                 <th>Nombre</th>
                 <th>Precio</th>
-                <th>Acciones</th>
+                <th>Detalles del producto</th>
             </tr>
         </thead>
         <tbody>
@@ -37,9 +32,7 @@ else
                     <td>@item.Nombre</td>
                     <td>@item.Precio.ToString("C")</td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.ProductoId" class="btn btn-sm btn-warning">Editar</a>
                         <a asp-action="Details" asp-route-id="@item.ProductoId" class="btn btn-sm btn-info">Detalles</a>
-                        <a asp-action="Delete" asp-route-id="@item.ProductoId" class="btn btn-sm btn-danger">Eliminar</a>
                     </td>
                 </tr>
             }

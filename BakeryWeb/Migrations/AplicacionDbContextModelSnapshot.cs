@@ -50,13 +50,6 @@ namespace BakeryWeb.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductoId"));
 
-                    b.Property<string>("Descripcion")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("EnStock")
-                        .HasColumnType("bit");
-
                     b.Property<string>("ImagenUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -66,7 +59,7 @@ namespace BakeryWeb.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Precio")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(10,2)");
 
                     b.HasKey("ProductoId");
 
