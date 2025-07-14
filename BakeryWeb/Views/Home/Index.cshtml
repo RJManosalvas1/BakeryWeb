@@ -2,14 +2,13 @@
     ViewData["Title"] = "Inicio";
 }
 
-<!-- Hero / Banner -->
+
 <div class="text-center py-5 bg-light">
     <h1 class="display-4">Bienvenidos a Bakery Shop</h1>
     <p class="lead">Dulces momentos, horneados con amor.</p>
     <a class="btn btn-primary btn-lg mt-3" asp-controller="Producto" asp-action="Index">Ver Productos</a>
 </div>
 
-<!-- Productos Destacados -->
 <div class="container py-5">
     <h2 class="text-center mb-4">Nuestros Productos</h2>
     <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -19,7 +18,6 @@
                 <div class="card-body text-center">
                     <h5 class="card-title">Cupcakes</h5>
                     <p class="card-text">Suaves, esponjosos y con el glaseado perfecto.</p>
-                    <a class="btn btn-outline-primary" asp-controller="Producto" asp-action="Details" asp-route-id="1">Ver más</a>
                 </div>
             </div>
         </div>
@@ -29,7 +27,6 @@
                 <div class="card-body text-center">
                     <h5 class="card-title">Torta de Chocolate</h5>
                     <p class="card-text">La favorita de todos, hecha con cacao premium.</p>
-                    <a class="btn btn-outline-primary" asp-controller="Producto" asp-action="Details" asp-route-id="2">Ver más</a>
                 </div>
             </div>
         </div>
@@ -39,7 +36,6 @@
                 <div class="card-body text-center">
                     <h5 class="card-title">Personalizados</h5>
                     <p class="card-text">Pasteles personalizados como tu los quieras.</p>
-                    <a class="btn btn-outline-primary" asp-controller="Producto" asp-action="Details" asp-route-id="3">Ver más</a>
                 </div>
             </div>
         </div>

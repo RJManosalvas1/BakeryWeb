@@ -88,3 +88,30 @@ footer {
     padding-top: 20px;
     padding-bottom: 20px;
 }
+
+.decoracion-lado {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    height: 100vh;
+    object-fit: cover;
+    opacity: 0.15;
+    z-index: -1;
+}
+
+.decoracion-izquierda {
+    left: 0;
+}
+
+.decoracion-derecha {
+    right: 0;
+    transform: scaleX(-1);
+}
+
+/* Ocultar en pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .decoracion-lado {
+        display: none;
+    }
+}
