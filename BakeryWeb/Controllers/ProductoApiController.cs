@@ -82,6 +82,37 @@ namespace BakeryWeb.Controllers
             return NoContent();
         }
 
+        //EDIT
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutProducto(int id, [FromBody] Producto producto)
+        {
+            if (id != producto.ProductoId)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(producto).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_context.Productos.Any(p => p.ProductoId == id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+
 
     }
 }
